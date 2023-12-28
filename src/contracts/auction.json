@@ -1,0 +1,782 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "idProblem",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			}
+		],
+		"name": "AuctionFinished",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "idProblem",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			}
+		],
+		"name": "AuctionRestarted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "idProblem",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "OfferCreated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "idProblem",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			}
+		],
+		"name": "ProblemClosed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "area",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "ProblemCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "FINISHED",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_AREA_LENGTH",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_PROBLEM_LENGTH",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_TITLE_LENGTH",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PENDING",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "WORKING",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "auctionPrices",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "idProblem",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "closeProblem",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_problem",
+				"type": "uint256"
+			}
+		],
+		"name": "createOffer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_area",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_startPrice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dateLimit",
+				"type": "uint256"
+			}
+		],
+		"name": "createProblem",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteProblemById",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "finishAuction",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_problem",
+				"type": "uint256"
+			}
+		],
+		"name": "getMinimumOffer",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "idProblem",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionProblems.Offer",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_author",
+				"type": "address"
+			}
+		],
+		"name": "getMyProblems",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampCreation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "area",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "state",
+						"type": "string"
+					}
+				],
+				"internalType": "struct AuctionProblems.Problem[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "getOffersProblem",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "idProblem",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionProblems.Offer[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "getProblemById",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampCreation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "area",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "state",
+						"type": "string"
+					}
+				],
+				"internalType": "struct AuctionProblems.Problem",
+				"name": "problem",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getProblems",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampCreation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "area",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "state",
+						"type": "string"
+					}
+				],
+				"internalType": "struct AuctionProblems.Problem[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getUserInformationByAddress",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "expPoints",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "karma",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"internalType": "struct AuctionProblems.UserInformation",
+				"name": "userInformation",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "problems",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "author",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestampCreation",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestampLimit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "area",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "state",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			}
+		],
+		"name": "restartAuctionProblem",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idProblem",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_area",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dateLimit",
+				"type": "uint256"
+			}
+		],
+		"name": "updateProblemById",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "usersInformations",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "expPoints",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "karma",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+
+*{
+  font-family: 'DM Sans', sans-serif;
+}
+
+.navbar-brand{
+  font-size:30px;
+  font-style: italic;
+}
+
+.link{
+  text-decoration: none;
+  color:black;
+  background-color: white;
+  padding:10px;
+  border-radius:25px;
+  transition:  background-color 0.3s;
+}
+
+.link:hover{
+  color:white;
+  background-color: #0a4b88;
+}
+
+
+.link-problem{
+  text-decoration: none;
+  color:black;
+  background-color: white;
+}
+
+.icon{
+  font-size: 40px;
+}
+
+.detail-problem{
+  border-radius: 25px;
+  background-color: #0070D8;
+  cursor: pointer;
+  color:white;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.detail-problem:hover{
+  transform: scale(1.1);
+  background-color: #0a4b88;
+}
+
+.navbar{
+  background-color: #0070D8;
+  padding-top:15px;
+  padding-bottom: 15px;
+}
+
+.problem-details-extended{
+  background-color: #0070D8;
+  padding: 10px;
+  border-radius:25px;
+}
+
+.reduced-width{
+  width:12%;
+}
+
+.buttom{
+  background-color: #0070D8;
+  border-radius:25px;
+  color:white;
+  width:50%;
+  padding: 10px;
+}
+
+.buttom-finish{
+  border-radius:25px;
+  background-color: #d8ca00;
+  padding: 10px;
+  cursor:pointer;
+}
+
+.buttom-finish-disabled{
+  background-color: #b1b1b1;
+  padding: 10px;
+  border-radius:25px;
+  color:#696666
+}
+
+.buttom-close{
+  border-radius:25px;
+  background-color: #fd4343;
+  padding: 10px;
+  cursor:pointer;
+}
+
+.buttom-delete{
+  border-radius:25px;
+  background-color: #f30000;
+  padding: 10px;
+  cursor:pointer;
+}
+
+.buttom-update{
+  border-radius:25px;
+  background-color: #2cbef8;
+  padding: 10px;
+  cursor:pointer;
+}
+
+.buttom-create{
+  background-color: #0070D8;
+  border-radius:25px;
+  color:white;
+  padding: 10px;
+}
+
+.error{
+  color:red;
+}
+
+.userInformation{
+  color:white;
+  font-size:30px;
+  font-weight: bold;
+}
