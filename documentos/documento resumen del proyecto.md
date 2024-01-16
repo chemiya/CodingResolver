@@ -71,6 +71,8 @@ La aplicación contará con las siguientes vistas:
 
 
 La navegación entre las diferentes vistas en la siguiente:
+
+
 <img src="./navegacion.svg">
 
 
