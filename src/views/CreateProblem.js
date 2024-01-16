@@ -92,6 +92,10 @@ const CreateProblem = () => {
     };
 
 
+    const returnBack=()=>{
+        navigate('/');
+    }
+
 
     const editData = async (e) => {
         if (title == "" || description == "" || area == "" || dateLimit == "" || startPrice == undefined) {
@@ -113,6 +117,16 @@ const CreateProblem = () => {
 
     return (
         <div>
+            <div className='container mt-3'>
+                <div className='row'>
+                    <div className='col'>
+                    <button onClick={returnBack} className='buttom-return'>Return</button>
+                        </div>
+
+                </div>
+            </div>
+
+
             <div className='container'>
                 <div className='row'>
                     <div className='col'>

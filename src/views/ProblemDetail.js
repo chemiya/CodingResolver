@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import AuctionContract from './../contracts/auction.json';
 import { ContractId } from "./../contracts/contract"
 import Web3 from 'web3';
+import { useNavigate} from 'react-router-dom';
 
 
 const ProblemDetail = () => {
@@ -23,6 +24,7 @@ const ProblemDetail = () => {
     const [showAcceptOffer, setShowAcceptOffer] = useState(0)
     const [offers, setOffers] = useState([])
     const [users, setUsers] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         async function init() {
 
@@ -130,12 +132,25 @@ const ProblemDetail = () => {
 
     };
 
+    const returnBack=()=>{
+        navigate('/');
+    }
+
 
 
 
 
     return (
         <div>
+
+            <div className='container mt-3'>
+                <div className='row'>
+                    <div className='col'>
+                    <button onClick={returnBack} className='buttom-return'>Return</button>
+                        </div>
+
+                </div>
+            </div>
 
 
 

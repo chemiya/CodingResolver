@@ -118,6 +118,10 @@ const MyProblems = () => {
         navigate('/createProblem/'+id);
     }
 
+    const returnBack=()=>{
+        navigate('/');
+    }
+
 
 
 
@@ -126,6 +130,14 @@ const MyProblems = () => {
 
     return (
         <div>
+            <div className='container mt-3'>
+                <div className='row'>
+                    <div className='col'>
+                    <button onClick={returnBack} className='buttom-return'>Return</button>
+                        </div>
+
+                </div>
+            </div>
 
 
             {!spinner ? (
