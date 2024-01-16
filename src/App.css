@@ -58,6 +58,7 @@
   background-color: #0070D8;
   padding: 10px;
   border-radius:25px;
+  color:white;
 }
 
 .reduced-width{
@@ -122,4 +123,23 @@
   color:white;
   font-size:30px;
   font-weight: bold;
+}
+
+.offer{
+  background-color: #0070D8;
+  padding: 10px;
+  border-radius:25px;
+  color:white;
+  
+}
+
+.text-offer{
+  font-size:30px
+}
+
+.text-offer-price{
+  font-size:70px
+}
+.icon-price{
+  font-size:60px
 }

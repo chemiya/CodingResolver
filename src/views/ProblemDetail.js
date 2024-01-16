@@ -21,7 +21,8 @@ const ProblemDetail = () => {
     const [showError, setShowError] = useState(0)
     const [showNoOffer, setShowNoOffer] = useState(0)
     const [showAcceptOffer, setShowAcceptOffer] = useState(0)
-
+    const [offers, setOffers] = useState([])
+    const [users, setUsers] = useState([])
     useEffect(() => {
         async function init() {
 
@@ -47,12 +48,12 @@ const ProblemDetail = () => {
                     console.log(problemLoaded)
                     let problem = await contractInstance.methods.getProblemById(id).call();
 
-                    const dateLoaded = new Date(Number(problem[5]) * 1000); 
+                    const dateLoaded = new Date(Number(problem[5]) * 1000);
                     const dd = String(dateLoaded.getDate()).padStart(2, '0');
-                    const mm = String(dateLoaded.getMonth() + 1).padStart(2, '0'); 
+                    const mm = String(dateLoaded.getMonth() + 1).padStart(2, '0');
                     const yyyy = dateLoaded.getFullYear();
                     const formatDate = `${dd}/${mm}/${yyyy}`;
-                    problem[5]=formatDate
+                    problem[5] = formatDate
 
 
                     let minimumOffer = await contractInstance.methods.getMinimumOffer(id).call();
@@ -68,16 +69,36 @@ const ProblemDetail = () => {
                     setProblem(problem)
                     let slimAddress = minimumOffer[1].slice(0, 6) + "..." + minimumOffer[1].slice(minimumOffer[1].length - 5, minimumOffer[1].length)
                     setSlimAddress(slimAddress)
+                    let users_array = []
+
+                    let offers = await contractInstance.methods.getOffersProblem(id).call();
+                    for (let i = 0; i < offers.length; i++) {
+                        offers[i][2] = Number(offers[i][2])
+                        let slimAddressOffer = offers[i][1].slice(0, 6) + "..." + offers[i][1].slice(offers[i][1].length - 5, offers[i][1].length)
+                        offers[i][3] = slimAddressOffer
+
+                        let userInformation = await contractInstance.methods.getUserInformationByAddress(offers[i][1]).call();
+                        userInformation[1] = Number(userInformation[1])
+                        userInformation[0] = Number(userInformation[0])
+                        users_array.push(userInformation)
+
+                    }
+
+
+                    setUsers(users_array)
+                    setOffers(offers)
+                    console.log(offers)
 
 
 
-                    
+
+
                     if (problem[8] == "Pending") {
-                        
+
                         setShowAcceptOffer(1)
                     }
 
-                   
+
 
 
                 } catch (error) {
@@ -233,6 +254,70 @@ const ProblemDetail = () => {
                     <h1></h1>
                 )}
 
+                {showNoOffer ? (
+                    <div className='row'>
+                        <div className='col'>
+                            <div className='row'>
+                                <div className='col mt-3'>
+                                    <h1 className='text-center'>Offers made by users</h1>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col'>
+                                    <h2 className='text-center'>There is no offers!</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                ) : (
+
+                    <div className='row'>
+                        <div className='col'>
+                            <div className='row'>
+                                <div className='col mt-3'>
+                                    <h1 className='text-center'>Offers made by users</h1>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col'>
+                                    {offers.map((element, index) => (
+
+                                        <div className="row offer mt-4">
+                                            <div className='col-6 d-flex flex-column align-items-center justify-content-center'>
+                                                <div className='offer-detail d-flex flex-column'>
+                                                    <div className='d-flex '>
+                                                        <i class="fa-solid fa-user me-2 icon"></i>
+                                                        <p className='text-offer'>{element[3]}</p>
+                                                    </div>
+                                                    <div className='d-flex mt-2'>
+                                                        <i class="fa-solid fa-briefcase me-2 icon"></i>
+                                                        <p className='text-offer'>ExpPoints: {users[index][0]}</p>
+
+                                                    </div>
+                                                    <div className='d-flex mt-2'>
+                                                        <i class="fa-solid fa-handshake-angle me-2 icon"></i>
+                                                        <p className='text-offer'>Karma: {users[index][1]}</p>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div className='col-6 d-flex flex-column align-items-center justify-content-center'>
+                                                <div className='offer-value d-flex align-items-center'>
+                                                    <i className="fa-solid fa-euro-sign icon-price me-2"></i>
+                                                    <p className='text-offer-price mt-3'>{element[2]}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                )}
 
 
 
